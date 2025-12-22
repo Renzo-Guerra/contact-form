@@ -23,25 +23,23 @@ export const ContactForm = ({ }: props) => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset } = useForm<FormFields>(
-      {
-        resolver: zodResolver(schema)
-      },
-    );
+    reset
+  } = useForm<FormFields>({ resolver: zodResolver(schema) });
 
   const onSubmit: SubmitHandler<FormFields> = async (data: FormFields) => {
     await toast.promise(
       // In a real case scenario the data will be sent to a server to be proccesed
       // axios.post(variables.endpoint, data, { headers: { "Content-Type": "application/json" } }),
-      await new Promise(resolve => setTimeout(resolve, 4000)),
+      new Promise(resolve => setTimeout(resolve, 1000)),
       {
         loading: "Sending...",
         success: "Form sent successfully!",
         error: "Something went wrong...",
-      }
+      },
     ).then(() => reset());
-
   }
+
+
   return (
     <>
       <form
