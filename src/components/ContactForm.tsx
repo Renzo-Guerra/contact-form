@@ -30,7 +30,10 @@ export const ContactForm = ({ }: props) => {
     await toast.promise(
       // In a real case scenario the data will be sent to a server to be proccesed
       // axios.post(variables.endpoint, data, { headers: { "Content-Type": "application/json" } }),
-      new Promise(resolve => setTimeout(resolve, 1000)),
+      new Promise(resolve => {
+        console.log(data);
+        setTimeout(resolve, 1000)
+      }),
       {
         loading: "Sending...",
         success: "Form sent successfully!",
